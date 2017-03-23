@@ -67,7 +67,6 @@ view model =
                         model.photos.selectedPhoto
                         PrimaryPhoto
                     , value (List.head model.photos.first |> withDefault "")
-                    , mandatory
                     ]
                 , defaultInput
                     [ fieldName "title"
@@ -75,7 +74,6 @@ view model =
                     , placeholder "Ex : Le meilleur burger de Paris"
                     , onInput Title
                     , value model.title
-                    , mandatory
                     ]
                 ]
             , Html.text model.joke
