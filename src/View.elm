@@ -32,28 +32,10 @@ view model =
         photo attributes =
             Photo.default <| defaultAttrs <| attributes
     in
-        div []
+        div [ Html.Attributes.style [ ( "width", "700px" ), ( "margin-left", "auto" ), ( "margin-right", "auto" ) ] ]
             [ div []
                 [ Html.form [ Html.Attributes.action "javascript:void(0)" ]
                     [ Html.text model.title
-                    , AutocompleteView.default
-                        [ placeholder "Commencez à taper le nom de la sortie..."
-                        , value model.autocomplete.searchQuery
-                        , Events.onInput LaunchAutocomplete
-                        , AutocompleteAttributes.selection
-                            (Just
-                                [ ( "Jokes"
-                                  , model.autocomplete.elements
-                                  )
-                                ]
-                            )
-                            (\joke -> joke)
-                            ReplaceJoke
-                            model.autocomplete.searchQuery
-                            True
-                        , AutocompleteAttributes.selectedElement model.autocomplete
-                        , noBottomPadding
-                        ]
                     ]
                 , photo
                     [ fieldName "remote_image_url"
@@ -76,5 +58,4 @@ view model =
                     , value model.title
                     ]
                 ]
-            , Html.text model.joke
             ]
